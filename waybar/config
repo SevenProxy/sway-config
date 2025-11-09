@@ -1,0 +1,229 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passtrough": false,
+    "gtk-layer-shell": true,
+    "height": 0,
+
+    "modules-left": [
+        "clock",
+        "network#speed",
+        "custom/netusage",
+        "custom/weather",
+        "sway/workspaces"
+    ],
+
+    "modules-center": [
+      "sway/window"
+    ],
+
+    "modules-right": [
+        "group/resources",
+        "group/preference",
+        "network#signal",
+        "backlight",
+        "pulseaudio",
+        "pulseaudio#microphone",
+        "battery"
+    ],
+
+    "sway/window": {
+      "format": "{}",
+      "max-length": 50,
+      "rewrite": {
+        "(.*) - Mozilla Firefox": "🌎 $1",
+        "(.*) - Nvim": " $1",
+        "(.*) - vim": " $1",
+        "(.*) - zsh": " [$1]",
+        "(.*) - fish": " [$1]",
+      }
+    },
+
+
+    "group/preference": {
+        "orientation": "inherit",
+        "modules": [
+            "custom/keyboard-layout",
+            "sway/language"
+        ]
+    },
+
+    "sway/language": {
+      "format": "{short} {flag}",
+    },
+
+    "custom/keyboard-layout": {
+      	"exec": "i=$(swaymsg -t get_inputs); echo \"$i\" | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
+        "format": "",
+        "tooltip-format": "󰍽: cheatsheet\nLayout: {0}",
+        // Interval set only as a fallback; use signal to update the module more immediately
+        "interval": 30,
+        // See example config for sending signal to Waybar in ~/.config/sway/config.d/input
+        "signal": 1,
+        "on-click": "~/.config/waybar/scripts/keyhint.sh",
+    },
+
+    "sway/workspaces": {
+        "on-scroll-up": "swaymsg workspace next",
+        "on-scroll-down": "swaymsg workspace prev",
+        "all-outputs": true,
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "urgent": "",
+            "active": "",
+            "default": ""
+        }
+    },
+
+   "group/resources": {
+        "orientation": "inherit",
+        "modules": [
+            "cpu",
+            "temperature",
+            "disk",
+        ]
+    },
+
+    "cpu": {
+        "interval": 5,
+        "format": " {usage}%",
+        "states": {
+            "warning": 70,
+            "critical": 90,
+        },
+    },
+    
+    "temperature": {
+        "critical-threshold": 80,
+        "format-critical": " {temperatureC}°C",
+        "format": " {temperatureC}°C",
+        "tooltip-format": "  󰍽: s-tui\n {temperatureC}° Celsius\n{temperatureF}° Fahrenheit\n{temperatureK}° Kelvin",
+        "on-click": "footclient -T waybar_s-tui -e s-tui"
+    },
+
+    "disk": {
+        "interval": 600,
+        "format": "󰋊 {percentage_used}%",
+        "path": "/",
+        "on-click": "footclient -T waybar_dua -e dua i /",
+        "tooltip-format": "    󰍽: dua\nTotal: {total}\n Used: {used} ({percentage_used}%)\n Free: {free} ({percentage_free}%)",
+    }, 
+
+    "custom/playerctl": {
+        "format": "{icon}  {}",
+        "return-type": "json",
+        "max-length": 70,
+        "exec": "~/.config/waybar/scripts/audio.sh",
+        "on-click": "playerctl play-pause",
+        "interval": 1,
+        "format-icons": {
+            "Playing": "",
+            "Paused": ""
+        }
+    },
+
+    "clock": {
+        "format": "󰅐 {:%OI:%M %p  %d/%m}",
+        "on-click": "footclient -T waybar_calcurse -e calcurse",
+        "actions": {
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        },
+        "calendar": {
+            "on-scroll": 1,
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            },
+        },
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "tooltip": true,
+        "format-muted": " Muted",
+        "on-click": "pamixer -t",
+        "on-scroll-up": "pamixer -i 5",
+        "on-scroll-down": "pamixer -d 5",
+        "scroll-step": 5,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "default": ["", "", ""]
+        }
+    },
+
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "tooltip": false,
+        "format-source": " {volume}%",
+        "format-source-muted": " Muted",
+        "on-click": "pamixer --default-source -t",
+        "on-scroll-up": "pamixer --default-source -i 5",
+        "on-scroll-down": "pamixer --default-source -d 5",
+        "scroll-step": 5
+    },
+
+    "custom/pacman": {
+        "format": "󰮯",
+        "tooltip-format": "L󰍽: Pacseek\nR󰍽: Upgrade",
+        "on-click": "footclient -T waybar_pacseek -e pacseek",
+        "on-click-right": "footclient -T waybar_garuda-update -e bash -c 'garuda-update && (read -p \"Update complete. Press Enter to exit.\" && exit 0) || (read -p \"Update failed. Press Enter to exit.\" && exit 1)'",
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "󰖨"]
+    },
+
+    "battery": {
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-icons": [" ", " ", " ", " ", " "],
+        "max-length": 25
+    },
+
+
+    "network#speed": {
+        "interval": 1,
+        "format": "{bandwidthTotalBytes} 󰁞 󰁆",
+        "tooltip-format": "{bandwidthDownBytes} 󰁆 {bandwidthUpBytes} 󰁞"
+    },
+
+    "network#signal": {
+        "format-wifi": "  {ipaddr} ({signalStrength}%)",
+        "format-ethernet": "{ipaddr}/{cidr}",
+        "format-disconnected": "Offline",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "",
+        "max-length": 32,
+        "on-click": "networkmanager_dmenu"
+    },
+
+    "custom/netusage": {
+        "interval": 1,
+        "return-type": "json",
+        "exec": "~/.config/waybar/scripts/netusage2.sh",
+        "format": "{}  "
+    }
+}
