@@ -1,0 +1,135 @@
+* {
+    border: none;
+    font-family: Cartograph CF Nerd Font, monospace;
+    font-weight: bold;
+    font-size: 12px;
+    min-height: 0;
+	border-radius: 0px;
+}
+
+window#waybar {
+    background: black;
+    color: white;
+	border-radius: 0px;
+}
+
+tooltip {
+    background: black;
+    border-radius: 0px;
+}
+
+tooltip label {
+    color: white;
+}
+
+#workspaces button {
+    padding: 5px;
+    color: white;
+    margin-right: 5px;
+}
+
+#workspaces button.active {
+	background: transparent;
+    color: white;
+}
+
+#workspaces button.focused {
+    color: black;
+    background: white;
+}
+
+#workspaces button.urgent {
+    color: black;
+    background: white;
+}
+
+#workspaces button:hover {
+    background: transparent;
+    color: white;
+}
+
+#language,
+#custom-playerctl,
+#custom-netusage,
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#workspaces,
+#backlight,
+#custom-keyboard-layout,
+#resources {
+	background: black;
+    padding: 2px 10px;
+    margin: 0px 0px;
+}
+
+#window {
+  border-radius: 0px;
+}
+
+#resources {
+    border-radius: 6px;
+    margin-right: 10px;
+}
+
+#cpu,
+#temperature {
+	color: white;
+    margin-right: 5px;
+}
+
+#workspaces {
+    border-radius: 0px 6px 6px 0px;
+    margin-left: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+#custom-keyboard-layout {
+  border-radius: 6px 0px 0px 6px;
+}
+
+#language,
+#preference {
+    color: #707880;
+    border-left: 0px;
+    border-right: 0px;
+    padding: 0px 0px;
+}
+
+#custom-playerctl {
+    border-radius: 0px 0px 6px 6px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+#clock {
+    color: #707880;
+}
+
+#custom-netusage,
+#network {
+    color: white;
+}
+
+#pulseaudio {
+    color: #707880;
+}
+
+#pulseaudio.microphone {
+    color: #707880;
+}
+
+#battery {
+    color: #707880;
+    border-radius: 0 0px 0px 0;
+    margin-right: 0px;
+    border-left: 0px;
+}
+
+#backlight {
+  color: #707880;
+}
+
