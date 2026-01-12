@@ -14,8 +14,8 @@ set {
     $term kitty
 
     # Application launcher
-    $launcher fuzzel
-    
+    $launcher wofi --show drun
+
     # Power Menu
     $powermenu ~/.config/sway/scripts/power_menu.sh
 
@@ -197,8 +197,8 @@ floating_modifier $mod normal
 #
 bindsym {
     # Volume
-    XF86AudioRaiseVolume exec pamixer -ui 2
-    XF86AudioLowerVolume exec pamixer -ud 2
+    XF86AudioRaiseVolume exec pamixer -ui 5
+    XF86AudioLowerVolume exec pamixer -ud 5
     XF86AudioMute exec pamixer --toggle-mute
 
     # Player

@@ -14,8 +14,8 @@ set {
     $term kitty
 
     # Application launcher
-    $launcher fuzzel
-    
+    $launcher wofi --show drun
+
     # Power Menu
     $powermenu ~/.config/sway/scripts/power_menu.sh
 

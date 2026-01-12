@@ -39,4 +39,4 @@ exec_always nwg-drawer -r -c 7 -is 90 -mb 10 -ml 50 -mr 50 -mt 10
 exec_always swayrd
 
 # Sway Fader
-exec python3 ~/.config/sway/scripts/swayfader.py     
+#exec python3 ~/.config/sway/scripts/swayfader.py     

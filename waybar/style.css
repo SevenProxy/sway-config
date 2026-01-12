@@ -1,51 +1,51 @@
 * {
     border: none;
-    border-radius: 0;
     font-family: Cartograph CF Nerd Font, monospace;
     font-weight: bold;
     font-size: 12px;
     min-height: 0;
+	border-radius: 0px;
 }
 
 window#waybar {
-    background: rgba(87, 61, 38, 0);
-    color: #FFF9D5;
+    background: black;
+    color: white;
+	border-radius: 0px;
 }
 
 tooltip {
-    background: rgba(87, 61, 38, 0.5);
-    border-radius: 0px 0px 6px 6px
+    background: black;
+    border-radius: 0px;
 }
+
 tooltip label {
-    color: #FFF9D5;
+    color: white;
 }
 
 #workspaces button {
-    padding: 6px;
-    color: #FFF9D5;
+    padding: 5px;
+    color: white;
     margin-right: 5px;
 }
 
 #workspaces button.active {
-    color: #FDBC4B;
+	background: transparent;
+    color: white;
 }
 
 #workspaces button.focused {
-    color: #FFF9D5;
-    background: #FDBC4B;
-    border-radius: 10px;
+    color: black;
+    background: white;
 }
 
 #workspaces button.urgent {
-    color: #11111b;
-    background: #6BA18A;
-    border-radius: 6px;
+    color: black;
+    background: white;
 }
 
 #workspaces button:hover {
-    background: #11111b;
-    color: #FFF9D5;
-    border-radius: 6px;
+    background: transparent;
+    color: white;
 }
 
 #language,
@@ -60,13 +60,13 @@ tooltip label {
 #backlight,
 #custom-keyboard-layout,
 #resources {
-    background: rgba(100, 64, 27, 0.5);
-    padding: 0px 10px;
+	background: black;
+    padding: 2px 10px;
     margin: 0px 0px;
 }
 
 #window {
-  border-radius: 6px;
+  border-radius: 0px;
 }
 
 #resources {
@@ -76,6 +76,7 @@ tooltip label {
 
 #cpu,
 #temperature {
+	color: white;
     margin-right: 5px;
 }
 
@@ -92,7 +93,7 @@ tooltip label {
 
 #language,
 #preference {
-    color: #E84627;
+    color: #707880;
     border-left: 0px;
     border-right: 0px;
     padding: 0px 0px;
@@ -105,30 +106,30 @@ tooltip label {
 }
 
 #clock {
-    color: #FDBC4B;
+    color: #707880;
 }
 
 #custom-netusage,
 #network {
-    color: #E0DBB7;
+    color: white;
 }
 
 #pulseaudio {
-    color: #B8D3ED;
+    color: #707880;
 }
 
 #pulseaudio.microphone {
-    color: #D19ECB;
+    color: #707880;
 }
 
 #battery {
-    color: #95D8BA;
+    color: #707880;
     border-radius: 0 0px 0px 0;
     margin-right: 0px;
     border-left: 0px;
 }
 
 #backlight {
-  color: #93CFD7
+  color: #707880;
 }
 

@@ -20,9 +20,8 @@
     ],
 
     "modules-right": [
-        "group/resources",
-        "group/preference",
         "network#signal",
+		"group/resources",
         "backlight",
         "pulseaudio",
         "pulseaudio#microphone",
@@ -39,19 +38,6 @@
         "(.*) - zsh": " [$1]",
         "(.*) - fish": " [$1]",
       }
-    },
-
-
-    "group/preference": {
-        "orientation": "inherit",
-        "modules": [
-            "custom/keyboard-layout",
-            "sway/language"
-        ]
-    },
-
-    "sway/language": {
-      "format": "{short} {flag}",
     },
 
     "custom/keyboard-layout": {
@@ -72,14 +58,15 @@
         "on-click": "activate",
         "format": "{icon}",
         "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "urgent": "",
-            "active": "",
-            "default": ""
+            "1": "I",
+            "2": "II",
+            "3": "III",
+            "4": "IV",
+            "5": "V",
+			"6": "VI",
+            "urgent": "VI",
+            "active": "I",
+            "default": "I"
         }
     },
 
